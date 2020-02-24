@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-let axios = require('axios')
+let Axi
 
 new Vue({
   el: '#app',
