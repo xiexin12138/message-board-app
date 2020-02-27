@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-let Axi
+import axios from 'axios'
+
+window.http = axios
 
 new Vue({
   el: '#app',
