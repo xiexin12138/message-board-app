@@ -13,7 +13,7 @@
       </div>
       <div :class="['form-group', {'has-error': form.errors.has('text')}]">
         <textarea class="form-control" name="text" rows="5" placeholder="说点什么..." v-model="form.text"></textarea>
-        <span class="help-block" v-if="form.errors.has('text')" v-text="errors.get('text')"></span>
+        <span class="help-block" v-if="form.errors.has('text')" v-text="form.errors.get('text')"></span>
       </div>
       <!-- 当form.errors 中有任何一个输入框有错误时，设置Submit 按钮为 disable 状态 -->
       <button class="btn btn-default" :disabled="form.errors.any()">Submit</button>
@@ -69,7 +69,7 @@ class Errors {
  * 封装 Form
  */
 class Form {
-  constructor() {
+  constructor(data) {
     this.originalData = data
 
     // 为了能以form.field 的方式获取数据，如 form.name
@@ -149,7 +149,7 @@ export default {
   },
   methods: { // 点击 Submit 会触发此事件，向服务器发送 POST 请求
     onSubmit() {
-      this.form.post('/api/message')
+      this.form.post('/api/messages')
         .then(data => this.message.unshift(data))
         .catch(errors => {})
     }
